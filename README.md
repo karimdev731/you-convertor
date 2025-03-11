@@ -49,8 +49,6 @@ npm start
 ## Évolutions futures
 - Connexion au backend (Node.js + Express.js).
 - Intégration d'une API pour la conversion (youtube-dl ou yt-dlp).
-- Gestion des comptes utilisateurs et d’un mode premium.
-- Hébergement du site sur Vercel.
 
 ## Statut du projet
 🚧 **En développement - Seule la partie frontend est disponible pour l’instant.**
