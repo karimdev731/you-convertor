@@ -1,0 +1,107 @@
+/* Mobile-first responsive styles */
+@media (max-width: 640px) {
+  /* Adjust font sizes for small screens */
+  h1 {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  h2 {
+    font-size: 1.75rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  /* Adjust padding and margins */
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Ensure buttons are properly sized */
+  button, .button {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.875rem !important;
+  }
+  
+  /* Fix animations for mobile */
+  .gsap-mobile-fix {
+    transform: none !important;
+  }
+}
+
+/* Ensure proper spacing on all devices */
+.section {
+  padding: 3rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 5rem 2rem;
+  }
+}
+
+/* Fix for overflow issues */
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Ensure images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Improve touch targets on mobile */
+button, 
+a, 
+input, 
+select, 
+textarea {
+  min-height: 44px;
+}
+
+/* Fix for GSAP animations on mobile */
+@media (max-width: 768px) {
+  .gsap-stagger-fix > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Add these styles to your existing responsive.css file */
+
+/* Fix for radio buttons on mobile */
+@media (max-width: 640px) {
+  [data-radix-collection-item] {
+    min-width: 20px !important;
+    min-height: 20px !important;
+  }
+  
+  [data-state="checked"]::after {
+    transform: scale(1) !important;
+  }
+  
+  .flex.items-center.space-x-3 {
+    margin-right: 12px;
+  }
+}
+
+/* Ensure radio buttons are visible */
+[role="radiogroup"] [data-state="checked"] {
+  background-color: rgba(255, 255, 255, 0.788);
+  border-color: #eeeeee;
+}
+
+[role="radiogroup"] [data-state="checked"]::after {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #a855f7;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

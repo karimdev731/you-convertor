@@ -34,6 +34,7 @@ export default function ConversionForm() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    // Make animations work on all screen sizes
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: formRef.current,
@@ -124,18 +125,18 @@ export default function ConversionForm() {
   };
 
   return (
-    <div id="conversion-form" className="py-20 px-4 bg-slate-900">
+    <div id="conversion-form" className="py-12 sm:py-20 px-4 bg-slate-900">
       <div className="max-w-4xl mx-auto">
         <h2
           ref={titleRef}
-          className="text-3xl md:text-4xl font-bold mb-10 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
+          className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-10 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
         >
           Convertissez vos vidéos en quelques clics
         </h2>
 
         <div
           ref={formRef}
-          className="bg-slate-800 rounded-2xl p-6 md:p-10 shadow-xl border border-slate-700"
+          className="bg-slate-800 rounded-2xl p-4 sm:p-6 md:p-10 shadow-xl border border-slate-700"
         >
           {error && (
             <Alert variant="destructive" className="mb-6">
@@ -144,7 +145,7 @@ export default function ConversionForm() {
             </Alert>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             <div>
               <Label
                 htmlFor="youtube-url"
@@ -169,17 +170,63 @@ export default function ConversionForm() {
               <RadioGroup
                 value={format}
                 onValueChange={setFormat}
-                className="flex space-x-4"
+                className="flex space-x-6"
               >
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="mp3" id="mp3" />
-                  <Label htmlFor="mp3" className="text-white">
+                  <div
+                    className={`h-4 w-4 rounded-full border relative ${
+                      format === "mp3" ? "border-purple-400" : "border-gray-500"
+                    }`}
+                    onClick={() => setFormat("mp3")}
+                  >
+                    {format === "mp3" && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="h-2 w-2 rounded-full bg-purple-400"></div>
+                      </div>
+                    )}
+                    <input
+                      type="radio"
+                      id="mp3"
+                      value="mp3"
+                      className="sr-only"
+                      checked={format === "mp3"}
+                      onChange={() => setFormat("mp3")}
+                    />
+                  </div>
+                  <Label
+                    htmlFor="mp3"
+                    className="text-white cursor-pointer"
+                    onClick={() => setFormat("mp3")}
+                  >
                     MP3 (Audio)
                   </Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="mp4" id="mp4" />
-                  <Label htmlFor="mp4" className="text-white">
+                  <div
+                    className={`h-4 w-4 rounded-full border relative ${
+                      format === "mp4" ? "border-pink-400" : "border-gray-500"
+                    }`}
+                    onClick={() => setFormat("mp4")}
+                  >
+                    {format === "mp4" && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="h-2 w-2 rounded-full bg-pink-400"></div>
+                      </div>
+                    )}
+                    <input
+                      type="radio"
+                      id="mp4"
+                      value="mp4"
+                      className="sr-only"
+                      checked={format === "mp4"}
+                      onChange={() => setFormat("mp4")}
+                    />
+                  </div>
+                  <Label
+                    htmlFor="mp4"
+                    className="text-white cursor-pointer"
+                    onClick={() => setFormat("mp4")}
+                  >
                     MP4 (Vidéo)
                   </Label>
                 </div>
@@ -210,11 +257,11 @@ export default function ConversionForm() {
               </div>
             )}
 
-            <div className="pt-4">
+            <div className="pt-2 sm:pt-4">
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium py-6 rounded-xl"
+                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium py-4 sm:py-6 rounded-xl"
               >
                 {isLoading ? (
                   <>
@@ -229,7 +276,7 @@ export default function ConversionForm() {
           </form>
 
           {downloadLink && (
-            <div className="mt-8 p-4 bg-slate-700/50 rounded-xl border border-purple-500/30">
+            <div className="mt-6 sm:mt-8 p-4 bg-slate-700/50 rounded-xl border border-purple-500/30">
               <h3 className="text-lg font-medium text-white mb-2">
                 Conversion réussie !
               </h3>
