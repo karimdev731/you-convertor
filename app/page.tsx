@@ -1,8 +1,9 @@
-import Hero from "@/components/hero"
-import ConversionForm from "@/components/conversion-form"
-import Features from "@/components/features"
-import HowItWorks from "@/components/how-it-works"
-import Footer from "@/components/footer"
+import Hero from "@/components/hero";
+import ConversionForm from "@/components/conversion-form";
+import Features from "@/components/features";
+import HowItWorks from "@/components/how-it-works";
+import Footer from "@/components/footer";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function Home() {
   return (
@@ -13,6 +14,5 @@ export default function Home() {
       <HowItWorks />
       <Footer />
     </main>
-  )
+  );
 }
-
